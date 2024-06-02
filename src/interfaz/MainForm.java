@@ -279,7 +279,6 @@ public class MainForm
 	            
 	            grafo.eliminarArista(nodo1, nodo2);
 				dibujargrafo(grafo.obtenerMatrizArista());
-				mostrarRelaciones(false);
 	        }
 	    });
 	    btnEliminarNodos.setBounds(154, 117, 138, 23);
@@ -323,16 +322,16 @@ public class MainForm
 		}
 	}
 
-	private void dibujarRegiones(int[][] matrizDeRelacion) {
-		_grafo.removeAllMapPolygons();
-		for (int i = 0; i < matrizDeRelacion.length; i++) {
-			for (int j = 0; j < matrizDeRelacion.length; j++) {  
-				if (matrizDeRelacion[i][j] > 0) {
-					dibujarAristaRegiones(grafo.obtenerNodoPorId(i).obtenerCoordenadas(), grafo.obtenerNodoPorId(j).obtenerCoordenadas(), Color.RED);
-				}
-			}
-		}
-	}
+//	private void dibujarRegiones(int[][] matrizDeRelacion) {
+//		_grafo.removeAllMapPolygons();
+//		for (int i = 0; i < matrizDeRelacion.length; i++) {
+//			for (int j = 0; j < matrizDeRelacion.length; j++) {  
+//				if (matrizDeRelacion[i][j] > 0) {
+//					dibujarAristaRegiones(grafo.obtenerNodoPorId(i).obtenerCoordenadas(), grafo.obtenerNodoPorId(j).obtenerCoordenadas(), Color.RED);
+//				}
+//			}
+//		}
+//	}
 	
 //	private void reset() {   
 //	    btnReset.addActionListener(new ActionListener() {
