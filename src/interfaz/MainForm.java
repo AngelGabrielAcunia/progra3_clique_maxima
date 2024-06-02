@@ -129,8 +129,7 @@ public class MainForm
 		detectarCoordenadas();	
 		cargarRelaciones();
 		//dividirRegiones();
-		mostrarRelaciones(false);
-		reset();
+		//reset();
 	}
 	
 	private void detectarCoordenadas() 
@@ -220,9 +219,7 @@ public class MainForm
 		                String algoritmo = (String) comboBox_Algoritmo.getSelectedItem();
 		                
 		                if (grafo.esGrafoConexo(grafo.obtenerMatrizArista())) {
-		                
-		                	
-		                	
+	
 		                }else {
 							JOptionPane.showMessageDialog(null, "Todas los Nodos deben tener al menos una similitud cargada (Grafo inconexo!)", "Error", JOptionPane.ERROR_MESSAGE);
 						}
@@ -276,7 +273,6 @@ public class MainForm
 	                    if (!nombreNodo1.equals(nombreNodo2)) {
 	                        grafo.agregarArista(nombreNodo1, nombreNodo2, peso);
 							dibujargrafo(grafo.obtenerMatrizArista());
-							mostrarRelaciones(false);
 	                    } else {
 	                        JOptionPane.showMessageDialog(null, "Las dos Nodos seleccionadas son iguales, por favor seleccione Nodos diferentes.", "Error", JOptionPane.ERROR_MESSAGE);
 	                    }
@@ -357,22 +353,22 @@ public class MainForm
 		}
 	}
 	
-	private void reset() {   
-	    btnReset.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent arg0) {
-	            _grafo.removeAllMapMarkers();
-	            _grafo.removeAllMapPolygons();
-	            grafo.reiniciarGrafo();
-	      
-				cargarDesplegablesNodos();
-
-				btnUnirNodos.setEnabled(true);
-				btnEliminarNodos.setEnabled(true);
-				textSimilitud.setText(null);
-				textCantidadRegiones.setText(null);
-	        }
-	    });
-	}
+//	private void reset() {   
+//	    btnReset.addActionListener(new ActionListener() {
+//	        public void actionPerformed(ActionEvent arg0) {
+//	            _grafo.removeAllMapMarkers();
+//	            _grafo.removeAllMapPolygons();
+//	            grafo.reiniciarGrafo();
+//	      
+//				cargarDesplegablesNodos();
+//
+//				btnUnirNodos.setEnabled(true);
+//				btnEliminarNodos.setEnabled(true);
+//				textSimilitud.setText(null);
+//				textCantidadRegiones.setText(null);
+//	        }
+//	    });
+//	}
 
 	private void cargarDesplegablesNodos() {
 		comboBox_Nodo1.setModel(new DefaultComboBoxModel<>(grafo.obtenerNodos().toArray(new String[0])));
