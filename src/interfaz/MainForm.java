@@ -297,10 +297,10 @@ public class MainForm
 	    btnEliminarNodos = new JButton("Eliminar Nodos");
 		btnEliminarNodos.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            String nombreProvincia1 = comboBox_Nodo1.getSelectedItem().toString();            
-	            String nombreProvincia2 = comboBox_Nodo2.getSelectedItem().toString();
+	            String nodo1 = comboBox_Nodo1.getSelectedItem().toString();            
+	            String nodo2 = comboBox_Nodo2.getSelectedItem().toString();
 	            
-	            grafo.eliminarArista(nombreProvincia1, nombreProvincia2);
+	            grafo.eliminarArista(nodo1, nodo2);
 				dibujargrafo(grafo.obtenerMatrizArista());
 				mostrarRelaciones(false);
 	        }
@@ -355,28 +355,6 @@ public class MainForm
 				}
 			}
 		}
-	}
-
-	private void mostrarRelaciones(boolean soloRegiones) {
-		
-	    String[] columnas = {"Origen", "Destino", "Similaridad"};
-	    DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
-	    
-		ArrayList<Arista> aristas = new ArrayList<Arista>();
-		if(soloRegiones) {
-			aristas = grafo.obtenerAristasRegiones();
-		}
-		else {
-			aristas = grafo.obtenerAristas();
-		}
-
-	    for (Arista arista : aristas) {
-	        Nodo nodoA = arista.obtenerNodos().get(0);
-	        Nodo nodoB = arista.obtenerNodos().get(1);
-	        int peso = arista.obtenerPeso();
-	        Object[] fila = {nodoA.obtenerNombre(), nodoB.obtenerNombre(), peso};
-	        modelo.addRow(fila);
-	    }
 	}
 	
 	private void reset() {   
