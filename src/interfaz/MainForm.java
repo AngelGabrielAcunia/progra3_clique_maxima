@@ -333,7 +333,7 @@ public class MainForm
 //		}
 //	}
 	
-//	private void reset() {   
+//	private void reset() {   ver mas tarde si reusamos
 //	    btnReset.addActionListener(new ActionListener() {
 //	        public void actionPerformed(ActionEvent arg0) {
 //	            _grafo.removeAllMapMarkers();
