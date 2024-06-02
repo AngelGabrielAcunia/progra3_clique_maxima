@@ -316,6 +316,8 @@ public class MainForm
 	    JComboBox comboBox_Criterio = new JComboBox();
 	    comboBox_Criterio.setBounds(25, 209, 134, 22);
 	    panelGrafo.add(comboBox_Criterio);
+        comboBox_Criterio.addItem("Peso");
+        comboBox_Criterio.addItem("Grado");
 	    
 	    JLabel lblCriterio = new JLabel("Criterio");
 	    lblCriterio.setFont(new Font("Tahoma", Font.PLAIN, 14));
