@@ -265,26 +265,7 @@ public class MainForm
 	        public void actionPerformed(ActionEvent e) {
 	            String nombreNodo1 = comboBox_Nodo1.getSelectedItem().toString();	            
 	            String nombreNodo2 = comboBox_Nodo2.getSelectedItem().toString();
-				
-	            String similitudText = textSimilitud.getText();
-	            try {
-	                int peso = Integer.parseInt(similitudText);
-	                if (peso > 0) {
-	                    if (!nombreNodo1.equals(nombreNodo2)) {
-	                        grafo.agregarArista(nombreNodo1, nombreNodo2, peso);
-							dibujargrafo(grafo.obtenerMatrizArista());
-	                    } else {
-	                        JOptionPane.showMessageDialog(null, "Las dos Nodos seleccionadas son iguales, por favor seleccione Nodos diferentes.", "Error", JOptionPane.ERROR_MESSAGE);
-	                    }
-	                } else {
-	                    JOptionPane.showMessageDialog(null, "Debe ingresar un numero entero mayor a 0", "Error", JOptionPane.ERROR_MESSAGE);
-	                }
-	            } catch (NumberFormatException ex) {
-	                JOptionPane.showMessageDialog(null, "Debe ingresar un numero entero", "Error", JOptionPane.ERROR_MESSAGE);
-	            }
-				catch (IllegalArgumentException ex) {
-	                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-	            }
+	            
 	        }
 	    });
 	    btnUnirNodos.setBounds(10, 117, 134, 23);
