@@ -33,6 +33,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JCheckBox;
 
 
 
@@ -41,11 +42,11 @@ public class MainForm
 	public JFrame frmNodosGolosos;
 
 	private JPanel panelgrafo;
-	private JPanel panelControlRelaciones;
-	private JPanel panelControlRegiones;
+	private JPanel panelGrafo;
+	private JPanel panelDetalles;
 
-	private JComboBox<String> comboBox_Provincia2;
-	private JComboBox<String> comboBox_Provincia1;
+	private JComboBox<String> comboBox_Nodo2;
+	private JComboBox<String> comboBox_Nodo1;
 	private JComboBox<String> comboBox_Algoritmo;
 	private JButton btnReset;
 	private JTextPane textCantidadRegiones;
@@ -55,8 +56,8 @@ public class MainForm
 	
 	private Grafo grafo;
 
-	private JButton btnCrearRelacion;
-	private JButton btnEliminarRelacion;
+	private JButton btnUnirNodos;
+	private JButton btnEliminarNodos;
 
 	/**
 	 * Launch the application.
@@ -100,11 +101,11 @@ public class MainForm
 		panelgrafo.setBounds(8, 10, 437, 512);
 		frmNodosGolosos.getContentPane().add(panelgrafo);
 		
-		panelControlRelaciones = new JPanel();
-		panelControlRelaciones.setToolTipText("");
-		panelControlRelaciones.setBounds(457, 11, 297, 251);
-		frmNodosGolosos.getContentPane().add(panelControlRelaciones);		
-		panelControlRelaciones.setLayout(null);
+		panelGrafo = new JPanel();
+		panelGrafo.setToolTipText("");
+		panelGrafo.setBounds(457, 11, 297, 377);
+		frmNodosGolosos.getContentPane().add(panelGrafo);		
+		panelGrafo.setLayout(null);
 		
 		_grafo = new JMapViewer();
 		_grafo.setCenter(new Point(1075, 700));
@@ -113,10 +114,10 @@ public class MainForm
 				
 		panelgrafo.add(_grafo);
 		
-		panelControlRegiones = new JPanel();
-		panelControlRegiones.setBounds(455, 273, 299, 249);
-		frmNodosGolosos.getContentPane().add(panelControlRegiones);
-		panelControlRegiones.setLayout(null);
+		panelDetalles = new JPanel();
+		panelDetalles.setBounds(455, 399, 299, 123);
+		frmNodosGolosos.getContentPane().add(panelDetalles);
+		panelDetalles.setLayout(null);
 		
 		lblBandera = new JLabel("");
 		lblBandera.setIcon(new ImageIcon("fondo.jpg"));
@@ -187,24 +188,24 @@ public class MainForm
 	    JLabel lblTituloRegiones = new JLabel("Creacion de regiones");
 	    lblTituloRegiones.setFont(new Font("Tahoma", Font.ITALIC, 16));
 	    lblTituloRegiones.setBounds(25, 11, 208, 22);
-	    panelControlRegiones.add(lblTituloRegiones);
+	    panelDetalles.add(lblTituloRegiones);
 	    
 	    JLabel lblRegiones = new JLabel("Regiones");
 	    lblRegiones.setBounds(25, 54, 66, 23);
-	    panelControlRegiones.add(lblRegiones);
+	    panelDetalles.add(lblRegiones);
 	    
 	    textCantidadRegiones = new JTextPane();
 	    textCantidadRegiones.setBounds(133, 54, 62, 22);
-	    panelControlRegiones.add(textCantidadRegiones);
+	    panelDetalles.add(textCantidadRegiones);
 	    
 	    JLabel lblAlgoritmo = new JLabel("Algoritmo");
 	    lblAlgoritmo.setBounds(25, 97, 86, 23);
-	    panelControlRegiones.add(lblAlgoritmo);
+	    panelDetalles.add(lblAlgoritmo);
 	    
 	    comboBox_Algoritmo = new JComboBox();
 	    comboBox_Algoritmo.setToolTipText("");
 	    comboBox_Algoritmo.setBounds(133, 97, 138, 22);
-	    panelControlRegiones.add(comboBox_Algoritmo);
+	    panelDetalles.add(comboBox_Algoritmo);
 
 	    
 	    
@@ -234,37 +235,39 @@ public class MainForm
 		    }
 		});
 		btnCrearRegiones.setBounds(25, 149, 136, 23);
-		panelControlRegiones.add(btnCrearRegiones);
+		panelDetalles.add(btnCrearRegiones);
 		
 				btnReset = new JButton("Reiniciar grafo");
 				btnReset.setBounds(68, 216, 190, 23);
-				panelControlRegiones.add(btnReset);
+				panelDetalles.add(btnReset);
 	}
 	
 	private void cargarRelaciones() {
 	    
-	    comboBox_Provincia1 = new JComboBox();
-	    comboBox_Provincia1.setToolTipText("Provincia");
-	    comboBox_Provincia1.setBounds(133, 44, 138, 22);
-	    panelControlRelaciones.add(comboBox_Provincia1);
+	    comboBox_Nodo1 = new JComboBox();
+	    comboBox_Nodo1.setToolTipText("Provincia");
+	    comboBox_Nodo1.setBounds(133, 44, 138, 22);
+	    panelGrafo.add(comboBox_Nodo1);
 	    
-	    comboBox_Provincia2 = new JComboBox();
-	    comboBox_Provincia2.setBounds(133, 80, 138, 22);
-	    panelControlRelaciones.add(comboBox_Provincia2);
+	    comboBox_Nodo2 = new JComboBox();
+	    comboBox_Nodo2.setBounds(133, 80, 138, 22);
+	    panelGrafo.add(comboBox_Nodo2);
 	    
 	    JLabel lblProvincia1 = new JLabel("Nodo 1");
+	    lblProvincia1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 	    lblProvincia1.setBounds(25, 44, 77, 23);
-	    panelControlRelaciones.add(lblProvincia1);
+	    panelGrafo.add(lblProvincia1);
 	    
 	    JLabel lblProvincia2 = new JLabel("Nodo 2");
+	    lblProvincia2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 	    lblProvincia2.setBounds(25, 80, 77, 23);
-	    panelControlRelaciones.add(lblProvincia2);
+	    panelGrafo.add(lblProvincia2);
 	    
-	    btnCrearRelacion = new JButton("Crear Relacion");
-		btnCrearRelacion.addActionListener(new ActionListener() {
+	    btnUnirNodos = new JButton("Unir Nodos");
+		btnUnirNodos.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            String nombreNodo1 = comboBox_Provincia1.getSelectedItem().toString();	            
-	            String nombreNodo2 = comboBox_Provincia2.getSelectedItem().toString();
+	            String nombreNodo1 = comboBox_Nodo1.getSelectedItem().toString();	            
+	            String nombreNodo2 = comboBox_Nodo2.getSelectedItem().toString();
 				
 	            String similitudText = textSimilitud.getText();
 	            try {
@@ -288,27 +291,45 @@ public class MainForm
 	            }
 	        }
 	    });
-	    btnCrearRelacion.setBounds(9, 185, 134, 23);
-	    panelControlRelaciones.add(btnCrearRelacion);
+	    btnUnirNodos.setBounds(10, 117, 134, 23);
+	    panelGrafo.add(btnUnirNodos);
 	    
-	    btnEliminarRelacion = new JButton("Eliminar Relacion");
-		btnEliminarRelacion.addActionListener(new ActionListener() {
+	    btnEliminarNodos = new JButton("Eliminar Nodos");
+		btnEliminarNodos.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            String nombreProvincia1 = comboBox_Provincia1.getSelectedItem().toString();            
-	            String nombreProvincia2 = comboBox_Provincia2.getSelectedItem().toString();
+	            String nombreProvincia1 = comboBox_Nodo1.getSelectedItem().toString();            
+	            String nombreProvincia2 = comboBox_Nodo2.getSelectedItem().toString();
 	            
 	            grafo.eliminarArista(nombreProvincia1, nombreProvincia2);
 				dibujargrafo(grafo.obtenerMatrizArista());
 				mostrarRelaciones(false);
 	        }
 	    });
-	    btnEliminarRelacion.setBounds(151, 185, 138, 23);
-	    panelControlRelaciones.add(btnEliminarRelacion);
+	    btnEliminarNodos.setBounds(154, 117, 138, 23);
+	    panelGrafo.add(btnEliminarNodos);
 	    
 	    JLabel lblTituloGrafo = new JLabel("Creacion de Grafo");
 	    lblTituloGrafo.setFont(new Font("Tahoma", Font.ITALIC, 16));
 	    lblTituloGrafo.setBounds(25, 11, 208, 22);
-	    panelControlRelaciones.add(lblTituloGrafo);
+	    panelGrafo.add(lblTituloGrafo);
+	    
+	    JComboBox comboBox_Criterio = new JComboBox();
+	    comboBox_Criterio.setBounds(25, 209, 134, 22);
+	    panelGrafo.add(comboBox_Criterio);
+	    
+	    JLabel lblCriterio = new JLabel("Criterio");
+	    lblCriterio.setFont(new Font("Tahoma", Font.PLAIN, 14));
+	    lblCriterio.setBounds(25, 176, 77, 22);
+	    panelGrafo.add(lblCriterio);
+	    
+	    JCheckBox check_Random = new JCheckBox("Random");
+	    check_Random.setFont(new Font("Tahoma", Font.PLAIN, 14));
+	    check_Random.setBounds(174, 208, 97, 23);
+	    panelGrafo.add(check_Random);
+	    
+	    JButton btnEjecutar = new JButton("Ejecutar");
+	    btnEjecutar.setBounds(25, 292, 89, 23);
+	    panelGrafo.add(btnEjecutar);
 	}
 
 	private void dibujargrafo(int[][] matrizDeRelacion) {
@@ -365,8 +386,8 @@ public class MainForm
 	      
 				cargarDesplegablesNodos();
 
-				btnCrearRelacion.setEnabled(true);
-				btnEliminarRelacion.setEnabled(true);
+				btnUnirNodos.setEnabled(true);
+				btnEliminarNodos.setEnabled(true);
 				textSimilitud.setText(null);
 				textCantidadRegiones.setText(null);
 	        }
@@ -374,7 +395,7 @@ public class MainForm
 	}
 
 	private void cargarDesplegablesNodos() {
-		comboBox_Provincia1.setModel(new DefaultComboBoxModel<>(grafo.obtenerNodos().toArray(new String[0])));
-		comboBox_Provincia2.setModel(new DefaultComboBoxModel<>(grafo.obtenerNodos().toArray(new String[0])));
+		comboBox_Nodo1.setModel(new DefaultComboBoxModel<>(grafo.obtenerNodos().toArray(new String[0])));
+		comboBox_Nodo2.setModel(new DefaultComboBoxModel<>(grafo.obtenerNodos().toArray(new String[0])));
 	}	
 }
